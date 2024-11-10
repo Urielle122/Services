@@ -19,6 +19,6 @@ var (
 func InitConnection(){
 	logs.Init()
 	once.Do(func() {
-        MysqlDb, ErroMysql = database.ConnectMysql()
+        MysqlDb, ErroMysql = database.ConnectToSupabase()
     })
 }
