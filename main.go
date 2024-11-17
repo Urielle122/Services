@@ -14,6 +14,6 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("POST /add", routes.AddServicesWithTransaction)
 	mux.HandleFunc("GET /service", routes.GetAllAthletes)
-	log.Println("Serveur démarré sur le port 8080")
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	//log.Println("Serveur démarré sur le port 8080")
+	//log.Fatal(http.ListenAndServe(":8080", mux))
 }
