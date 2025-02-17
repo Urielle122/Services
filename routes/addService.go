@@ -10,6 +10,20 @@ import (
 	"time"
 )
 
+func removeFileExtension(fileName string) string {
+	// Trouve la dernière occurrence du point "."
+	lastDotIndex := strings.LastIndex(fileName, ".")
+	if lastDotIndex == -1 {
+		// Si aucun point n'est trouvé, retourne le nom de fichier tel quel
+		return fileName
+	}
+	// Retourne le nom de fichier sans l'extension
+	return fileName[:lastDotIndex]
+}
+
+
+
+
 func AddServicesWithTransaction(w http.ResponseWriter, r *http.Request) {
 	// Structure pour la réponse
 	type Response struct {
@@ -50,7 +64,7 @@ func AddServicesWithTransaction(w http.ResponseWriter, r *http.Request) {
 	query := `INSERT INTO athletes (nom, prenom, age) VALUES ($1, $2, $3) RETURNING id, nom, prenom, age`
 	var insertedAthlete models.Athlete
 	// Insérer l'athlète sans spécifier l'ID, qui sera généré par la base de données
-	err = tx.QueryRowContext(ctx, query, body.Nom, body.Prenom, body.Age).Scan(&insertedAthlete.ID, &insertedAthlete.Nom, &insertedAthlete.Prenom, &insertedAthlete.Age)
+	err = tx.QueryRowContext(ctx, query, body.Nom, body.Prenom, body.Age, body.TypeFichier).Scan(&insertedAthlete.ID, &insertedAthlete.Nom, &insertedAthlete.Prenom, &insertedAthlete.Age, &insertedAthlete.TypeFichier)
 
 	if err != nil {
 		tx.Rollback()

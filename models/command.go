@@ -19,4 +19,7 @@ type Athlete struct {
     Nom     string `json:"nom"`
     Prenom  string `json:"prenom"`
     Age     string `json:"age,omitempty"`
+	TypeFichier string `json : "typeFichier"`
+	NomFichier string `json: "nomFichier"`
+	CheminFichier string `json: "cheminFichier"`
 }
