@@ -48,9 +48,12 @@ func AddServicesWithTransaction(w http.ResponseWriter, r *http.Request) {
 
 	// Préparer la requête sans inclure l'ID car il est généré par la base de données
 	query := `INSERT INTO athletes (nom, prenom, age) VALUES ($1, $2, $3) RETURNING id, nom, prenom, age`
+
+	query2 := `INSERT INTO documents_athletes (athlete_id, file, type_file, link_file) VALUES ($1, $2, $3, $4)`
+	
 	var insertedAthlete models.Athlete
 	// Insérer l'athlète sans spécifier l'ID, qui sera généré par la base de données
-	err = tx.QueryRowContext(ctx, query, body.Nom, body.Prenom, body.Age).Scan(&insertedAthlete.ID, &insertedAthlete.Nom, &insertedAthlete.Prenom, &insertedAthlete.Age)
+	err = tx.QueryRowContext(ctx, query, query2, body.Nom, body.Prenom, body.Age).Scan(&insertedAthlete.ID, &insertedAthlete.Nom, &insertedAthlete.Prenom, &insertedAthlete.Age)
 
 	if err != nil {
 		tx.Rollback()

@@ -20,3 +20,10 @@ type Athlete struct {
     Prenom  string `json:"prenom"`
     Age     string `json:"age,omitempty"`
 }
+
+type AthleteFile struct {
+	AthleteID string `json:"athlete_id"`
+	File 		string 	 `json:"file,omitempty"`
+	TypeFile string  `json:"type_file,omitempty"`
+	LinkFile 	string `json:"link_file,omitempty"`
+}
