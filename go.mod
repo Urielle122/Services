@@ -1,6 +1,6 @@
 module services
 
-go 1.23.0
+go 1.23
 
 require go.uber.org/zap v1.27.0
 
