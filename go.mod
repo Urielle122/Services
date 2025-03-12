@@ -2,6 +2,8 @@ module services
 
 go 1.23
 
+// vla les mots
+
 require go.uber.org/zap v1.27.0
 
 require filippo.io/edwards25519 v1.1.0 // indirect
