@@ -10,13 +10,7 @@ import (
 
 func ConnectToSupabase() (*sql.DB, error) {
 	// Paramètres de connexion
-	const (
-		host     = "aws-0-ca-central-1.pooler.supabase.com"
-		port     = 6543
-		user     = "postgres.yokfzzrreskhcvpclcib"
-		password = "xO5xAWXR0mTlRUBp" // Remplacez par votre mot de passe
-		dbname   = "postgres"
-	)
+
 
 	// Construction de la chaîne de connexion PostgreSQL
 	connStr := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=require",
